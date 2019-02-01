@@ -1,0 +1,35 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+      <form class="form-signin" method="POST" action="/modifyproductquantity">
+        <h2 class="form-signin-heading">Product Selection</h2>
+
+        
+        
+        {{form.hidden_tag()}}
+        
+        <select class="form-signin" name="value"> 
+         {% for product in my_product %}                
+                                         
+              <option class="form-signin-heading value="{{product.product_name}}">{{product.product_name}}</option>
+    
+         {% endfor %}
+        </select>
+        {{wtf.form_field(form.modify_value) }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sumbit</button>
+      </form>
+
+    </div> <!-- /container -->
+{% endblock %}
